@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment</title>
+    <link rel="stylesheet" href="owasp.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Threat Factors</h2>
+        <div class="row">
+            <div class="col">
+                <label for="sl">Skill Level</label>
+                <select id="sl" class="form-control" onchange="calc_score()">
+                    <option value="1">No Technical Skills</option>
+                    <option value="3">Some Technical Skills</option>
+                    <option value="5">Advanced Computer User</option>
+                    <option value="6">Network And Programming Skills</option>
+                    <option value="9">Security Penetration Skills</option>
+                </select>
+
+                <label for="motive">Motive</label>
+                <select id="motive" class="form-control" onchange="calc_score()">
+                    <option value="1">Low Or No Reward</option>
+                    <option value="4">Possible Reward</option>
+                    <option value="9">High Reward</option>
+                </select>
+
+                <label for="oppor">Opportunity</label>
+                <select id="oppor" class="form-control" onchange="calc_score()">
+                    <option value="0">Full Access/Expensive Resources Required</option>
+                    <option value="4">Special Access Or Resources Required</option>
+                    <option value="7">Some Access Or Resources Required</option>
+                    <option value="9">No Access Or Resources Required</option>
+                </select>
+
+                <label for="size">Size</label>
+                <select id="size" class="form-control" onchange="calc_score()">
+                    <option value="2">Developers</option>
+                    <option value="2">System Administrators</option>
+                    <option value="4">Intranet Users</option>
+                    <option value="5">Partners</option>
+                    <option value="6">Authenticated Users</option>
+                    <option value="9">Anonymous Internet Users</option>
+                </select>
+            </div>
+            <div class="col">
+                <h2>Vulnerability Factors</h2>
+                <label for="eod">Ease of Discovery</label>
+                <select id="eod" class="form-control" onchange="calc_score()">
+                    <option value="1">Practically impossible</option>
+                    <option value="3">Difficult</option>
+                    <option value="7">Easy</option>
+                    <option value="9">Automated Tools available</option>
+                </select>
+
+                <label for="eoe">Ease of Exploit</label>
+                <select id="eoe" class="form-control" onchange="calc_score()">
+                    <option value="1">Theoretical</option>
+                    <option value="3">Difficult</option>
+                    <option value="5">Easy</option>
+                    <option value="9">Automated Tools available</option>
+                </select>
+
+                <label for="aware">Awareness</label>
+                <select id="aware" class="form-control" onchange="calc_score()">
+                    <option value="1">Unknown</option>
+                    <option value="4">Hidden</option>
+                    <option value="6">Obvious</option>
+                    <option value="9">Public Knowledge</option>
+                </select>
+
+                <label for="intrude">Intrusion Detection</label>
+                <select id="intrude" class="form-control" onchange="calc_score()">
+                    <option value="1">Active Detection In Application</option>
+                    <option value="4">Logged And Reviewed</option>
+                    <option value="8">Logged Without Review</option>
+                    <option value="9">Not Logged</option>
+                </select>
+            </div>
+        </div>
+
+        <h2>Impact Factors</h2>
+        <div class="row">
+            <div class="col">
+                <h3>Technical Impact Factors</h3>
+                <label for="loc">Loss Of Confidentiality</label>
+                <select id="loc" class="form-control" onchange="calc_score()">
+                    <option value="2">Minimal non-sensitive data disclosed</option>
+                    <option value="6">Minimal critical data disclosed</option>
+                    <option value="6">Extensive non-sensitive data disclosed</option>
+                    <option value="7">Extensive critical data disclosed</option>
+                    <option value="9">All Data Disclosed</option>
+                </select>
+
+                <label for="loi">Loss Of Integrity</label>
+                <select id="loi" class="form-control" onchange="calc_score()">
+                    <option value="1">Minimal Slightly Corrupt Data</option>
+                    <option value="3">Minimal Seriously Corrupt Data</option>
+                    <option value="5">Extensive Slightly Corrupt Data</option>
+                    <option value="7">Extensive Seriously Corrupt Data</option>
+                    <option value="9">All Data Totally Corrupt</option>
+                </select>
+
+                <label for="loa">Loss Of Availability</label>
+                <select id="loa" class="form-control" onchange="calc_score()">
+                    <option value="1">Minimal Secondary Services Interrupted</option>
+                    <option value="5">Minimal Primary Services Interrupted</option>
+                    <option value="5">Extensive Secondary Services Interrupted</option>
+                    <option value="7">Extensive Primary Services Interrupted</option>
+                    <option value="9">All Services Completely Lost</option>
+                </select>
+
+                <label for="loacc">Loss of Accountability</label>
+                <select id="loacc" class="form-control" onchange="calc_score()">
+                    <option value="1">Fully Traceable</option>
+                    <option value="7">Possibly Traceable</option>
+                    <option value="9">Completely Anonymous</option>
+                </select>
+            </div>
+            <div class="col">
+                <h3>Business Impact Factors</h3>
+                <label for="finan">Financial Damage</label>
+                <select id="finan" class="form-control" onchange="calc_score()">
+                    <option value="1">Less Than The Cost To Fix The Vulnerability</option>
+                    <option value="3">Minor Effect On Annual Profit</option>
+                    <option value="7">Significant Effect On Annual Profit</option>
+                    <option value="9">Bankruptcy</option>
+                </select>
+
+                <label for="reput">Reputation Damage</label>
+                <select id="reput" class="form-control" onchange="calc_score()">
+                    <option value="1">Minimal Damage</option>
+                    <option value="4">Loss Of Major Accounts</option>
+                    <option value="5">Loss Of Goodwill</option>
+                    <option value="9">Brand Damage</option>
+                </select>
+
+                <label for="comply">Non-compliance</label>
+                <select id="comply" class="form-control" onchange="calc_score()">
+                    <option value="2">Minor Violation</option>
+                    <option value="5">Clear Violation</option>
+                    <option value="7">High Profile Violation</option>
+                </select>
+
+                <label for="privacy">Privacy Violation</label>
+                <select id="privacy" class="form-control" onchange="calc_score()">
+                    <option value="3">One Individual</option>
+                    <option value="5">Hundreds Of People</option>
+                    <option value="7">Thousands Of People</option>
+                    <option value="9">Millions Of People</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script src="owasp.js"></script>
+</body>
+</html>
